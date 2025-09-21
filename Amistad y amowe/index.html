@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nuestro Amor 💖</title>
+  <meta name="description" content="Una página romántica personalizada hecha con amor (y un poco de código)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b1020; --card:#121936; --muted:#93a4ff; --accent:#ff5aa5; --text:#e7eaff; --soft:#c6ccff;
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0; font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto; color:var(--text);
+      background: radial-gradient(1000px 600px at 80% -10%, #2a1850 0%, rgba(17,17,34,0) 60%),
+                  radial-gradient(900px 500px at -10% 10%, #102a50 0%, rgba(17,17,34,0) 60%),
+                  linear-gradient(180deg, #0b1020 0%, #0b1020 100%);
+      overflow-x:hidden;
+    }
+    header{
+      position:sticky; top:0; backdrop-filter:saturate(140%) blur(8px); background:rgba(11,16,32,.55);
+      border-bottom:1px solid rgba(198,204,255,.08); z-index:10
+    }
+    .wrap{max-width:1100px; margin:0 auto; padding:18px 20px}
+    .brand{display:flex; align-items:center; gap:10px; font-weight:800; letter-spacing:.5px}
+    .heart{width:26px; height:26px; display:inline-grid; place-items:center; background:var(--accent); border-radius:8px; box-shadow:0 6px 30px rgba(255,90,165,.5)}
+    .pill{display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; background:rgba(147,164,255,.12); color:var(--soft); font-size:12px; border:1px solid rgba(198,204,255,.18)}
+    .hero{display:grid; grid-template-columns:1.2fr .8fr; gap:28px; align-items:center; padding:40px 20px 24px}
+    .hero h1{font-size:clamp(28px,5vw,52px); line-height:1.1; margin:10px 0}
+    .hero p{color:var(--soft)}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,0)); border:1px solid rgba(198,204,255,.12); padding:20px; border-radius:18px}
+    .grid{display:grid; grid-template-columns:repeat(3,1fr); gap:16px}
+    .stat{display:grid; place-items:center; padding:16px; border-radius:16px; background:rgba(18,25,54,.8); border:1px solid rgba(198,204,255,.08)}
+    .stat b{font-size:28px}
+    .section{padding:36px 20px}
+    .section h2{margin:0 0 12px; font-size:26px}
+    .timeline{display:grid; gap:14px}
+    .t-item{display:grid; grid-template-columns:auto 1fr; gap:14px; align-items:start}
+    .t-dot{width:12px; height:12px; border-radius:50%; background:var(--muted); margin-top:9px; box-shadow:0 0 0 6px rgba(147,164,255,.15)}
+    .gallery{display:grid; grid-template-columns:repeat(4,1fr); gap:10px}
+    .gallery img{width:100%; height:160px; object-fit:cover; border-radius:12px; border:1px solid rgba(198,204,255,.12)}
+    .quiz{display:grid; gap:10px}
+    .question{padding:14px; border:1px solid rgba(198,204,255,.12); border-radius:12px; background:rgba(18,25,54,.8)}
+    .question h4{margin:0 0 8px}
+    .answers{display:grid; gap:8px}
+    .answers label{display:flex; gap:10px; align-items:center; padding:10px; border-radius:10px; cursor:pointer; border:1px solid rgba(198,204,255,.12)}
+    .btn{background:var(--accent); color:white; border:none; padding:12px 16px; border-radius:12px; font-weight:700; cursor:pointer; box-shadow:0 10px 30px rgba(255,90,165,.35)}
+    .footer{opacity:.75; font-size:12px; padding:20px}
+
+    /* Hearts animation */
+    .float-heart{position:fixed; pointer-events:none; animation:rise 5s linear forwards}
+    @keyframes rise{from{transform:translateY(0) scale(.7); opacity:.9} to{transform:translateY(-120vh) scale(1.2); opacity:0}}
+
+    /* Responsive */
+    @media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.gallery{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:560px){.grid{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap" style="display:flex; justify-content:space-between; align-items:center; gap:12px">
+      <div class="brand"><span class="heart">💗</span> <span id="brandNames">A & B</span></div>
+      <div class="pill">Hecho con Mucho amowe</div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="hero">
+      <div>
+        <div class="pill">Día de Amor y Amistad</div>
+        <h1>Para <span id="nameB">Andrea del Rosario Chumpitaz</span>, de <span id="nameA">Deivis </span></h1>
+        <p>Porque amar también es compilar paciencia, versionar recuerdos y hacer *merge* de nuestros corazones. Aquí está una pequeña obra hecha con amor (y código) solo para ti.</p>
+
+        <div class="grid" style="margin-top:14px">
+          <div class="stat"><div>Días juntos</div><b id="daysTogether">—</b></div>
+          <div class="stat"><div>Commits de cariño</div><b id="commitCount">0</b></div>
+          <div class="stat"><div>Latidos por minuto</div><b id="bpm">❤️</b></div>
+        </div>
+        <div style="display:flex; gap:10px; margin-top:14px">
+          <button class="btn" id="revealBtn">Desbloquear sorpresa</button>
+          <button class="btn" style="background:#6c8bff; box-shadow:0 10px 30px rgba(108,139,255,.35)" id="playSong">Reproducir canción</button>
+        </div>
+      </div>
+      <div class="card">
+        <h3 style="margin-top:0">Mini-biografía</h3>
+        <p id="bio">Nos conocimos jugando valo, durante enero, febrero y marzo hicimos *match* (literal y figurado), y desde entonces mi corazón es 99.99% contigo.</p>
+        <hr style="border-color:rgba(198,204,255,.12)" />
+        <div style="display:grid; gap:6px">
+          <label>Te amo loquita <input id="songUrl" type="url" placeholder="Muack, besitos hotwins" style="width:100%; padding:10px; border-radius:10px; border:1px solid rgba(198,204,255,.2); background:rgba(255,255,255,.02); color:var(--text)"></label>
+          <label>Una pista para la ultima parte <input id="secretPhrase" type="text" placeholder="tu #$%&/!" style="width:100%; padding:10px; border-radius:10px; border:1px solid rgba(198,204,255,.2); background:rgba(255,255,255,.02); color:var(--text)"></label>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Galería</h2>
+      <div class="gallery" id="gallery">
+        <img src="images/Recuerdo1.jpeg" alt="Recuerdo 1" />
+        <img src="images/Recuerdo2.jpeg" alt="Recuerdo 2" />
+        <img src="images/Recuerdo3.jpeg" alt="Recuerdo 3" />
+        <img src="images/Recuerdo4.jpeg" alt="Recuerdo 4" />
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Nuestra historia</h2>
+      <div class="timeline" id="timeline">
+        <div class="t-item"><div class="t-dot"></div><div><b>Nos conocimos</b><div class="muted">Algun dia de diciembre – jugando valo</div></div></div>
+        <div class="t-item"><div class="t-dot"></div><div><b>Primera cita</b><div class="muted"> Para mi fue en la Cafetería luego de que llegaras al pais – </div></div></div>
+        <div class="t-item"><div class="t-dot"></div><div><b>“Oficialmente”</b><div class="muted">09/04/2022</div></div></div>
+        <div class="t-item"><div class="t-dot"></div><div><b>Nuestro viaje favorito</b><div class="muted">Cancun – Mexico</div></div></div>
+      </div>
+    </section>
+
+    <section class="section card">
+      <h2>Quiz del amor ❤️</h2>
+      <div class="quiz" id="quiz"></div>
+      <button class="btn" id="submitQuiz" style="margin-top:10px">Ver resultado</button>
+      <div id="quizResult" style="margin-top:10px; font-weight:700"></div>
+    </section>
+
+    <section class="section">
+      <h2>💕🕊️Mi turroncito hermosa🌻</h2>
+      <div class="card">
+        <p>Introduce la clave correcta para descifrar el mensaje:</p>
+        <input id="unlockInput" type="password" placeholder="Escribe la clave" style="width:100%; padding:12px; border-radius:10px; border:1px solid rgba(198,204,255,.2); background:rgba(255,255,255,.02); color:var(--text)">
+        <button class="btn" id="unlockBtn" style="margin-top:10px">Descifrar</button>
+        <p id="secretMsg" style="display:none; margin-top:12px"></p>
+      </div>
+    </section>
+
+    <footer class="footer wrap">
+      Hecho con ❤️ por <span id="footerA">[Tu nombre]</span>. <span style="opacity:.6">Esta lloviendo y estamos a mucha?😉</span>
+    </footer>
+  </main>
+
+  <audio id="audio" preload="none"></audio>
+
+  <script>
+    const NAME_A = "Juan David Prieto";
+    const NAME_B = "Andrea del Rosario";
+    const START_DATE = "2022-04-09";
+    const SECRET_PHRASE = "tu putita";
+    const SECRET_MESSAGE = "Eres la mujer mas increible que conozco y estoy muy agradecido de tenerte en mi vida. Gracias mi amor, mi niña, mi princesa, mi puta, mi perra y mi zorra; podria decir mas pero creo que entiendes mi mensaje";
+    const DEFAULT_SONG_URL = "musica/Sebastián Yatra - Tacones Rojos (Official Video).mp3";
+
+    document.getElementById('nameA').textContent = NAME_A;
+    document.getElementById('nameB').textContent = NAME_B;
+    document.getElementById('brandNames').textContent = `${NAME_A} & ${NAME_B}`;
+    document.getElementById('footerA').textContent = NAME_A;
+
+    const daysTogetherEl = document.getElementById('daysTogether');
+    function updateDays(){
+      const start = new Date(START_DATE+"T00:00:00");
+      const now = new Date();
+      const diff = Math.floor((now - start) / (1000*60*60*24));
+      daysTogetherEl.textContent = diff >= 0 ? diff : '—';
+    }
+    updateDays(); setInterval(updateDays, 60*1000);
+
+    let commits = 0; const commitEl = document.getElementById('commitCount');
+    setInterval(()=>{commits++; commitEl.textContent = commits}, 2000);
+
+    const bpmEl = document.getElementById('bpm');
+    let t=0; setInterval(()=>{const bpm = 60 + Math.floor(15*Math.sin(t)); bpmEl.textContent = bpm + ' ♫'; t+=.4}, 700);
+
+    const audio = document.getElementById('audio');
+    const playBtn = document.getElementById('playSong');
+    const songInput = document.getElementById('songUrl');
+    const urlCandidate = DEFAULT_SONG_URL;
+    if(urlCandidate) audio.src = urlCandidate;
+    playBtn.addEventListener('click',()=>{
+      const candidate = songInput.value || audio.src;
+      if(!candidate){ alert('This is amowe'); return; }
+      audio.src = candidate; audio.play().catch(()=> alert('te amo'));
+    });
+
+    document.getElementById('revealBtn').addEventListener('click',()=>{
+      const who = prompt('¿Quién es mi persona favorita?');
+      if(!who) return;
+      if(who.trim().toLowerCase() === "drebos"){
+        confetti();
+        alert('¡Correcto! Siempre serás tú 💖');
+      } else {
+        alert('Mmm… cerca, pero mi corazón insiste en otro nombre 😉');
+      }
+    });
+
+const unlockBtn = document.getElementById('unlockBtn');
+const unlockInput = document.getElementById('unlockInput');
+const secretMsg = document.getElementById('secretMsg');
+
+unlockBtn.addEventListener('click', () => {
+  if (unlockInput.value.trim() === SECRET_PHRASE) {
+    secretMsg.innerHTML = SECRET_MESSAGE; 
+    secretMsg.style.display = 'block'; 
+    confetti();
+
+    audio.src = "musica/I_love.mp3";
+    audio.play().catch(() => alert("No se pudo reproducir la canción 😢"));
+  } else {
+    secretMsg.style.display = 'none'; 
+    alert('Clave incorrecta… prueba tu ------');
+  }
+});
+
+
+
+    const quizData = [
+      {q:'¿Cuál fue nuestra primera peli/juego juntos?', a:['No te metas con Zohan','Shrek','Avatar','Aquaman 2'], correct:0},
+      {q:'¿Qué topping no puede faltar en mi malteada?', a:['M%M','Chocorramo','Cereza','Ron con pasas'], correct:3},
+      {q:'¿Dónde fue nuestro primer beso?', a:['Parque','Cafetería','Cine','Plaza'], correct:0},
+    ];
+    const quizEl = document.getElementById('quiz');
+    quizData.forEach((item,idx)=>{
+      const div = document.createElement('div'); div.className='question';
+      div.innerHTML = `<h4>${idx+1}. ${item.q}</h4>`;
+      const answers = document.createElement('div'); answers.className='answers';
+      item.a.forEach((ans,i)=>{
+        const id = `q${idx}_a${i}`;
+        const lab = document.createElement('label');
+        lab.innerHTML = `<input type="radio" name="q${idx}" value="${i}"> <span>${ans}</span>`;
+        answers.appendChild(lab);
+      });
+      div.appendChild(answers); quizEl.appendChild(div);
+    });
+    document.getElementById('submitQuiz').addEventListener('click',()=>{
+      let score=0; quizData.forEach((item,idx)=>{
+        const sel = document.querySelector(`input[name="q${idx}"]:checked`);
+        if(sel && +sel.value===item.correct) score++;
+      });
+      const msg = score===quizData.length ? 'Es increible me conoces muy bien, Enviando flores ˚‧｡⋆🌻⋆｡‧˚' : `Puntaje: ${score}/${quizData.length}. ¡Igual te amo!`;
+      document.getElementById('quizResult').innerHTML = msg;
+    });
+
+    function addTimeline(date, title, place=''){
+      const host = document.getElementById('timeline');
+      const item = document.createElement('div'); item.className='t-item';
+      item.innerHTML = `<div class="t-dot"></div><div><b>${title}</b><div class="muted">${date}${place?(' – '+place):''}</div></div>`;
+      host.appendChild(item);
+    }
+
+    const seq = ["ArrowUp","ArrowUp","ArrowDown","ArrowDown","ArrowLeft","ArrowRight","ArrowLeft","ArrowRight","KeyB","KeyA"]; let idx=0;
+    window.addEventListener('keydown', (e)=>{
+      if(e.code===seq[idx]){ idx++; if(idx===seq.length){ confetti(); idx=0 } }
+      else { idx = e.code===seq[0] ? 1 : 0 }
+    });
+
+    function confetti(){
+      for(let i=0;i<24;i++){
+        const h = document.createElement('div');
+        h.className='float-heart'; h.textContent = Math.random()>.5 ? '💖' : '💘';
+        h.style.left = (Math.random()*100)+'vw';
+        h.style.bottom = '-10vh'; h.style.fontSize = (14+Math.random()*18)+'px';
+        document.body.appendChild(h);
+        setTimeout(()=>h.remove(), 5200);
+      }
+    }
+  </script>
+</body>
+</html>
